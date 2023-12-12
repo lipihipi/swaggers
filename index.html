@@ -14,11 +14,14 @@
     <!-- Div to hold the UI component -->
     <script>
 
+
+      const doc = "swagger.yaml";
+
       window.document.title += doc;
       window.onload = function () {
           // Begin Swagger UI call region
           const ui = SwaggerUIBundle({
-              url: "swagger.yaml",  //Location of Open API spec in the repo
+              url: doc,  //Location of Open API spec in the repo
               dom_id: '#swagger-ui',
               deepLinking: true,
               presets: [
