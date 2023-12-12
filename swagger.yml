@@ -232,7 +232,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/v1//user/me:
+  /api/v1/user/me:
     get:
       tags:
         - User
@@ -259,14 +259,23 @@ paths:
     patch:
       tags:
         - User
-      summary: Patch me
-      description: Get LoggedIn User Information
+      summary: Update user me
       requestBody:
         content:
           application/json:
             schema:
               type: object
-              example: ""
+              example:
+                goal:
+                  water: 16
+                  steps: 2000
+                  calories: 2500
+                  weight: 60
+                  exercise: 120
+                workoutFreq: 3 times
+                foodPreference: Veg
+                bodyFat: 35%
+                dateOfBirth: "2001-01-01"
       security:
         - bearerAuth: []
       parameters:
@@ -641,40 +650,6 @@ paths:
                   bmr: 445
                   fat: 4545
                   water: 4
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Origin
-          in: header
-          schema:
-            type: string
-          example: https://crm.lipigo.com
-      responses:
-        "200":
-          description: Successful response
-          content:
-            application/json: {}
-  /api/v1/user/me:
-    patch:
-      tags:
-        - User
-      summary: Update user me
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                goal:
-                  water: 16
-                  steps: 2000
-                  calories: 2500
-                  weight: 60
-                  exercise: 120
-                workoutFreq: 3 times
-                foodPreference: Veg
-                bodyFat: 35%
-                dateOfBirth: "2001-01-01"
       security:
         - bearerAuth: []
       parameters:
