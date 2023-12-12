@@ -1,26 +1,37 @@
-<!DOCTYPE html>
 <html>
   <head>
-    <title>Redoc</title>
-    <!-- needed for adaptive design -->
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Roboto:300,400,700" rel="stylesheet">
-
-    <!--
-    Redoc doesn't change outer page styles
-    -->
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-      }
-    </style>
+    <!-- Load the latest Swagger UI code and style from npm using unpkg.com -->
+    <script src="https://unpkg.com/swagger-ui-dist@3/swagger-ui-bundle.js"></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://unpkg.com/swagger-ui-dist@3/swagger-ui.css"
+    />
+    <title>API Definition:</title>
   </head>
   <body>
-   <div id="redoc-ui"> <!-- Div to hold the UI component -->
-    <redoc id="redoc" spec-url='swagger.yml'></redoc>
-   </div>	  
-    <script src="https://cdn.redoc.ly/redoc/latest/bundles/redoc.standalone.js"> </script>
+    <div id="swagger-ui"></div>
+    <!-- Div to hold the UI component -->
+    <script>
+
+      window.document.title += doc;
+      window.onload = function () {
+          // Begin Swagger UI call region
+          const ui = SwaggerUIBundle({
+              url: "swagger.yaml",  //Location of Open API spec in the repo
+              dom_id: '#swagger-ui',
+              deepLinking: true,
+              presets: [
+                  SwaggerUIBundle.presets.apis,
+                  SwaggerUIBundle.SwaggerUIStandalonePreset
+              ],
+              plugins: [
+                  SwaggerUIBundle.plugins.DownloadUrl
+              ],
+          })
+          window.ui = ui
+
+      }
+    </script>
   </body>
 </html>
